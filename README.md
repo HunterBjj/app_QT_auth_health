@@ -12,3 +12,7 @@
 <p align="center"> Рисунок 3 - Считывание данных </p>
 ![4](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/a16098d6-c00a-47f0-adf2-86f958936b71)
 <p align="center"> Рисунок 4 - Просмотр данных </p>
+![4](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/709f7c1d-52b9-42fe-be72-cb2e6c2f9d5e)
+![3](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/39f591c3-d556-43de-8e20-8ea740ae7bb5)
+![2](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/94d9f63f-8ea6-4d0d-8e8d-469d132ac0ba)
+![1](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/e133eb69-92ed-413e-90ad-7bb93acc9530)
