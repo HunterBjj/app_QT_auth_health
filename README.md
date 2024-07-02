@@ -9,11 +9,14 @@
 ![2](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/f5083015-baaf-4867-8309-0058a09ccbde)
 
 <p align="center"> Рисунок 2 - Регистрация </p>
-![3](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/287e19fd-686b-4722-aa97-22f2a12922e2)
+
+![3](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/920446a1-735f-4d98-a6dc-317b16d8c4e6)
 
 
 <p align="center"> Рисунок 3 - Считывание данных </p>
-![4](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/18effbf6-235e-4f58-97a5-e3b8e8e7f89f)
+
+![4](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/06902214-37d9-4583-8c34-460d0376e0ff)
+
 
 <p align="center"> Рисунок 4 - Просмотр данных </p>
 
