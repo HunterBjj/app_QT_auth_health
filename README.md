@@ -1,22 +1,43 @@
-### Приложение для считывание данных с COM порта, а также авторизация и регистрация пользователя.
+# Login Application QT
 
-![1](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/41a077fd-68cc-490d-ba0c-1ff91d478b64)
+Login application can be used in mostly every project written in QT. 
 
-
- <p align="center"> Рисунок 1 - Вход </p>
-
-
-![2](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/f5083015-baaf-4867-8309-0058a09ccbde)
-
-<p align="center"> Рисунок 2 - Регистрация </p>
-
-![3](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/920446a1-735f-4d98-a6dc-317b16d8c4e6)
-
-
-<p align="center"> Рисунок 3 - Считывание данных </p>
-
-![4](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/06902214-37d9-4583-8c34-460d0376e0ff)
+## Database connection:
+It has to be connected to the database, I personally was using Remote Routing on the Rassberry Pi 
+where my database is stored, but if you have your own host you can enter IP, port as well as login and password to
+your database. I was using QMYSQL plugin, if you have problems installing the driver, just go through the instruction in
+**Driver_Installation.txt** file in this repository because I personally spent a lot of time trying to find the right answer.
+### Database structure:
+| Username        | Password                 | Salt           |  Email          |
+| -------------   |:-------------:           | :-------------:|-----:           |
+| user            | 06454cb860514c5108b194   | plcjAttdWZLE   | user@email.com  |
 
 
-<p align="center"> Рисунок 4 - Просмотр данных </p>
+## Encryption:
+SHA-256 is used as hashing algorythm to store passwords safely in the database. Salts were added, static salt is a part of a program, 
+you can change it in **registration.cpp** file. 
+```C++
+ QString staticSalt = "my-static-salt";
+```
+Dynamic salt is generated for each new user completing the registratin, and is stored in the database.
 
+## Here enter your host info:
+```C++
+QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL","mainbase");
+    db.setHostName("192.168.0.1"); // Host IP 
+    db.setPort(0000); // Port
+    db.setDatabaseName("myDatabase"); //Database name 
+    db.setUserName("admin"); // Database username
+    db.setPassword("admin"); //Database Password
+```
+
+## Login Window:
+![alt text](https://github.com/Luk4s1k/Login_Application_QT/blob/master/loginWindow.png)
+
+## Registration Window:
+![alt text](https://github.com/Luk4s1k/Login_Application_QT/blob/master/registrtionWindow.png)
+
+## Customization 
+
+You can change the window style in **login.ui** file of **registration.ui file**. Encryption algorythm can be changed if you find SHA-256 not 
+secure enought for your purposes. 
