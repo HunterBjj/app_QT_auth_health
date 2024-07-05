@@ -24,3 +24,6 @@
 ![image](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/e0a2f506-5f44-40b1-8edd-dbeab6dba1bc)
 
 <p align="center"> Рисунок 4 - Вывод графика </p>
+
+структура БД 
+![image](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/f034531b-b7ae-406b-9a77-f9a21759f1cd)
