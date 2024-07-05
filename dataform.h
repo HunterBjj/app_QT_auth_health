@@ -7,6 +7,8 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QSqlQueryModel>
+#include <QSqlQueryModel>
+#include "chart.h"
 
 namespace Ui {
 class DataForm;
@@ -24,13 +26,17 @@ public:
 private slots:
     void on_download_clicked();
     void on_delete_row_clicked();
+    void on_chart_clicked();
+
 
 private:
     Ui::DataForm *ui;
     QSqlDatabase db;
     QString userLogin;
     QSqlQueryModel *model;
+    Chart *charts;
     void loadData();
+     bool loopRunning; // Флаг для управления циклом
 };
 
 #endif // DATAFORM_H

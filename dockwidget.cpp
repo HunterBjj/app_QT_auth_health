@@ -12,7 +12,8 @@ QString temperatureDB;
 
 DockWidget::DockWidget(QWidget *parent) :
     QDockWidget(parent),
-    ui(new Ui::DockWidget)
+    ui(new Ui::DockWidget),
+    loopRunning(false) // Инициализация флага
 {
     ui->setupUi(this);
     // Установка QTextEdit только для чтения
@@ -33,6 +34,7 @@ DockWidget::DockWidget(QWidget *parent) :
 DockWidget::~DockWidget()
 {
     delete ui;
+    db.close();
 }
 void DockWidget::on_measurePressureButton_clicked()
 {
@@ -65,8 +67,9 @@ void DockWidget::on_temperatureButton_2_clicked()
     }
     bool ok;
     double value = thermometer.replace(",", ".").toDouble(&ok);
-         if (value < 0) {
-         QMessageBox::warning(this, "Проверка числа", "Число отрицательное.");
+         if (value < 25 or 60 < value ) {
+         QMessageBox::warning(this, "Проверка числа", "Введите корректную температуру человека.");
+         return;
          }
         else if (ok) {
             qDebug() << "Text is a valid double:" << value;
@@ -82,6 +85,14 @@ void DockWidget::on_temperatureButton_2_clicked()
 
 void DockWidget::on_temperatureButton_clicked()
 {
+    if (loopRunning) {
+            // Если цикл уже запущен, остановите его
+            loopRunning = false;
+            return;
+        } else {
+            // Если цикл не запущен, запустите его
+            loopRunning = true;
+        }
 
 
     // Получение списка доступных COM-портов
@@ -133,10 +144,12 @@ void DockWidget::on_temperatureButton_clicked()
                 QByteArray data1;
 
                while(1) {
-                   serial.waitForReadyRead(400);
+                   QCoreApplication::processEvents();
+                    //serial.waitForReadyRead(300);
+                   // Обработка событий
                    serial.write(sendData);
                     QByteArray data = serial.readAll();
-                    serial.waitForReadyRead(400);
+                    serial.waitForReadyRead(310);
                    if (!data.isEmpty()) {
                    qDebug() << "Прочитанные данные:" << data;
                    data1 = data;
@@ -161,7 +174,8 @@ void DockWidget::on_temperatureButton_clicked()
        } else {
            qDebug() << "Нет доступных COM-портов.";
        }
-
+       // Сброс флага, когда цикл завершен
+       loopRunning = false;
 }
 
 

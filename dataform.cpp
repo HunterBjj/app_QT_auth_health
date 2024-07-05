@@ -1,4 +1,5 @@
 #include "dataform.h"
+//#include "chart.h"
 #include "ui_dataform.h"
 #include <QFileDialog>
 #include <QMessageBox>
@@ -6,10 +7,10 @@
 
 DataForm::DataForm(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::DataForm)
+    ui(new Ui::DataForm),
+     loopRunning(false) // Инициализация флага
 {
     ui->setupUi(this);
-
     // Инициализация базы данных
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("D:/3lab_project/2/QT-Login-Application-master/Alcometer.db");
@@ -146,3 +147,13 @@ void DataForm::on_delete_row_clicked()
         // Обновляем данные в модели после удаления
         loadData();
 }
+
+void DataForm::on_chart_clicked(){
+    charts = new Chart(nullptr);
+    charts->setWindowTitle("График измерений");
+    charts->resize(1000, 800); // Устанавливаем размер окна графика
+    // Загрузка данных в график
+    charts->show();
+    this->hide();
+}
+

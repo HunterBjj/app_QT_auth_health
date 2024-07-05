@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include <QDockWidget>
 
+
 namespace Ui {
 class DockWidget;
 }
@@ -26,6 +27,8 @@ private:
     Ui::DockWidget *ui;
     QSqlDatabase db; // Добавлен член данных для базы данных
     QString currentUser;
+    bool loopRunning; // Флаг для управления циклом
+
 
 private slots:
     void on_measurePressureButton_clicked();
