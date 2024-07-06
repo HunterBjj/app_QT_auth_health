@@ -25,5 +25,5 @@
 
 <p align="center"> Рисунок 4 - Вывод графика </p>
 
-структура БД 
 ![image](https://github.com/HunterBjj/app_QT_auth_health/assets/64096687/f034531b-b7ae-406b-9a77-f9a21759f1cd)
+<p align="center"> Рисунок 5 - Архитектура БД </p>
